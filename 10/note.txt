@@ -1,0 +1,5 @@
+privileged-psp-rahymov
+privileged-psp-cr
+
+secret=$(k get sa mary -ojson | jq -r .secrets[].name)
+token=$(k get secret $secret -ojson | jq -r '.data["token"]' | base64 --decode)
